@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Калькулятор</title>
+</head>
+<body>
+    <h1>Простой калькулятор</h1>
+    <input type="text" id="input1">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" id="input2">
+    <button onclick="calculate()">Посчитать</button>
+    <p>Результат: <span id="result"></span></p>
+
+    <script>
+        function calculate() {
+            var input1 = parseFloat(document.getElementById('input1').value);
+            var operator = document.getElementById('operator').value;
+            var input2 = parseFloat(document.getElementById('input2').value);
+            var result;
+            switch (operator) {
+                case '+':
+                    result = input1 + input2;
+                    break;
+                case '-':
+                    result = input1 - input2;
+                    break;
+                case '*':
+                    result = input1 * input2;
+                    break;
+                case '/':
+                    if (input2 !== 0) {
+                        result = input1 / input2;
+                    } else {
+                        result = "Ошибка: деление на ноль";
+                    }
+                    break;
+                default:
+                    result = "Неверный оператор";
+            }
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
